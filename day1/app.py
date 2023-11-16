@@ -13,4 +13,4 @@ def index():
 
 @app.route("/dummy")
 def dummy():
-    return 'Dummy'
+    return {"error":"Token is not valid!"}, 403 # Response Object
