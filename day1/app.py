@@ -30,3 +30,11 @@ def handle_books():
             'author': author
         })
         return {}, 201
+
+
+@app.route("/books/<int:book_id>", methods=["GET"])
+def get_a_book(book_id):
+    if book_id > len(book_list):
+        return "Error", 400
+    
+    return book_list[book_id-1]
