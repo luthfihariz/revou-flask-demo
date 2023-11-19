@@ -15,8 +15,13 @@ def get_a_book(book_idx):
 
 @app.route("/books", methods=["POST"])
 def add_book():
-    title = request.form.get("title")
-    author = request.form.get("author")
+    # title = request.form.get("title")
+    # author = request.form.get("author")
+
+    body = request.get_json()
+    title = body.get("title")
+    author = body.get("author")
+    
     books.append({
         "title": title,
         "author": author
@@ -26,8 +31,22 @@ def add_book():
 
 @app.route("/books/<int:book_idx>", methods=["PUT"])
 def update_book(book_idx):
-    title = request.form.get("title")
-    author = request.form.get("author")
+    # title = request.form.get("title")
+    # author = request.form.get("author")
+
+    if not request.is_json:
+        return {"error": "Tidak support format selain JSON."}, 400
+    
+    body = request.get_json()
+
+    if "title" not in body:
+        return {"error": "Title tidak tersedia."}, 400
+    
+    if "author" not in body:
+        return {"error": "Author tidak tersedia."}, 400
+
+    title = body.get("title")
+    author = body.get("author")
 
     book = books[book_idx - 1]
     if title:
