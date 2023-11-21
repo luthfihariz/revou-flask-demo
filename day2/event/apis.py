@@ -35,7 +35,6 @@ def create_event():
     return __get_event_responses()
 
 
-
 def __get_event_responses():
     print(events)
     return list(map(lambda item: {'name': item['name'], 'start_date': datetime.strftime(item['start_date'], EVENT_DATE_FORMAT)}, events))
