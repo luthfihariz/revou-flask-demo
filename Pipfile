@@ -11,6 +11,7 @@ python-dotenv = "*"
 sqlalchemy = "*"
 flask-bcrypt = "*"
 marshmallow = "*"
+pyjwt = "*"
 
 [dev-packages]
 
