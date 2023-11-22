@@ -12,6 +12,7 @@ sqlalchemy = "*"
 flask-bcrypt = "*"
 marshmallow = "*"
 pyjwt = "*"
+injector = "*"
 
 [dev-packages]
 
