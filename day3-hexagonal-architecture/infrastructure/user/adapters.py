@@ -17,3 +17,7 @@ class UserAccessor(IUserAccessor):
     def get_by_username(self, username) -> Optional[UserDomain]:
         user = User.query.filter_by(username=username).first()
         return ObjectMapperUtil.map(user, UserDomain)
+    
+    def get_by_id(self, user_id: int) -> UserDomain | None:
+        user = User.query.get(user_id)
+        return ObjectMapperUtil.map(user, UserDomain)

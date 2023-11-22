@@ -1,4 +1,4 @@
-from typing import Type, TypeVar
+from typing import Type, TypeVar, List
 import dataclasses
 
 class ObjectMapperUtil:
@@ -19,3 +19,10 @@ class ObjectMapperUtil:
                 for field in domain_fields
             }
         return destination_domain_class(**attributes)
+    
+    @staticmethod
+    def map_array(source_model_objects, destination_domain_class: Type[T]) -> List[T]:
+        return [
+            ObjectMapperUtil.map(source_model_object, destination_domain_class)
+            for source_model_object in source_model_objects
+        ]
